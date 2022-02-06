@@ -1,4 +1,4 @@
-import 'package:language_pickers/languages.dart';
+import 'package:language_pickers2/languages.dart';
 
 class LanguagePickerUtils {
   static Language getLanguageByIsoCode(String isoCode) {

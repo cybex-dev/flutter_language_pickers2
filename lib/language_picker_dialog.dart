@@ -1,8 +1,6 @@
-import 'package:language_pickers/languages.dart';
-import 'package:language_pickers/utils/typedefs.dart';
-
-import 'package:language_pickers/utils/my_alert_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:language_pickers2/utils/my_alert_dialog.dart';
+import 'package:language_pickers2/utils/typedefs.dart';
 import 'languages.dart';
 
 ///Provides a customizable [Dialog] which displays all languages

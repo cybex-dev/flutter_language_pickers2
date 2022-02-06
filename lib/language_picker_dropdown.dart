@@ -1,6 +1,6 @@
-import 'package:language_pickers/languages.dart';
-import 'package:language_pickers/utils/typedefs.dart';
 import 'package:flutter/material.dart';
+import 'package:language_pickers2/languages.dart';
+import 'package:language_pickers2/utils/typedefs.dart';
 
 ///Provides a customizable [DropdownButton] for all languages
 class LanguagePickerDropdown extends StatefulWidget {
