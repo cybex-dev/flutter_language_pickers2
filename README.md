@@ -1,4 +1,4 @@
-# language_pickers
+# language_pickers2
 
 ![](https://img.shields.io/github/license/gomgom/flutter_language_pickers.svg)
 ![](https://img.shields.io/badge/Flutter%20Package-^0.2.0+1-blue.svg)
@@ -18,8 +18,8 @@ Lots of source codes are from [country_pickers GitHub Repository](https://github
 #### LanguagePickerDropdown example
 
 ```dart
-import 'package:language_pickers/language.dart';
-import 'package:language_pickers/language_pickers.dart';
+import 'package:language_pickers2/language.dart';
+import 'package:language_pickers2/language_pickers.dart';
 
 Language _selectedDropdownLanguage =
       LanguagePickerUtils.getLanguageByIsoCode('ko');
@@ -52,8 +52,8 @@ LanguagePickerDropdown(
 #### LanguagePickerDialog example
 
 ```dart
-import 'package:language_pickers/language.dart';
-import 'package:language_pickers/language_pickers.dart';
+import 'package:language_pickers2/language.dart';
+import 'package:language_pickers2/language_pickers.dart';
 
 Language _selectedDialogLanguage =
       LanguagePickerUtils.getLanguageByIsoCode('ko');
@@ -89,8 +89,8 @@ void _openLanguagePickerDialog() => showDialog(
 #### LanguagePickerCupertino example
 
 ```dart
-import 'package:language_pickers/language.dart';
-import 'package:language_pickers/language_pickers.dart';
+import 'package:language_pickers2/language.dart';
+import 'package:language_pickers2/language_pickers.dart';
 
 Language _selectedCupertinoLanguage =
   LanguagePickerUtils.getLanguageByIsoCode('ko');
