@@ -1,5 +1,11 @@
 # language_pickers2
 
+**Notes:**
+
+Original repository from [github.com/gomgom](https://github.com/gomgom), unfortunately the package has gone stale and isn't null safe anymore. This package address null-safety issues & maintenance.
+
+---
+
 ![](https://img.shields.io/github/license/gomgom/flutter_language_pickers.svg)
 ![](https://img.shields.io/badge/Flutter%20Package-^0.2.0+1-blue.svg)
 ![](https://img.shields.io/github/languages/code-size/gomgom/flutter_language_pickers.svg)
