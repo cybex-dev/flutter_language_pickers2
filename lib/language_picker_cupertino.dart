@@ -63,19 +63,19 @@ class LanguagePickerCupertino extends StatefulWidget {
   final List<Map<String, String>> languagesList;
 
   const LanguagePickerCupertino({
-    Key key,
-    this.onValuePicked,
-    this.itemBuilder,
+    Key? key,
+    required this.onValuePicked,
+    required this.itemBuilder,
     this.pickerItemHeight = defaultPickerItemHeight,
     this.pickerSheetHeight = defaultPickerSheetHeight,
-    this.textStyle,
-    this.diameterRatio,
-    this.backgroundColor,
-    this.offAxisFraction,
-    this.useMagnifier,
-    this.magnification,
-    this.scrollController,
-    this.languagesList,
+    required this.textStyle,
+    required this.diameterRatio,
+    required this.backgroundColor,
+    required this.offAxisFraction,
+    required this.useMagnifier,
+    required this.magnification,
+    required this.scrollController,
+    required this.languagesList,
   }) : super(key: key);
 
   @override
@@ -83,12 +83,12 @@ class LanguagePickerCupertino extends StatefulWidget {
 }
 
 class _CupertinoLanguagePickerState extends State<LanguagePickerCupertino> {
-  List<Language> _allLanguages;
+  late List<Language> _allLanguages;
 
   @override
   void initState() {
     super.initState();
-    final languageList = widget.languagesList ?? defaultLanguagesList;
+    final languageList = widget.languagesList;
     _allLanguages = languageList.map((item) => Language.fromMap(item)).toList();
   }
 
@@ -102,11 +102,7 @@ class _CupertinoLanguagePickerState extends State<LanguagePickerCupertino> {
       height: widget.pickerSheetHeight,
       color: CupertinoColors.white,
       child: DefaultTextStyle(
-        style: widget.textStyle ??
-            const TextStyle(
-              color: CupertinoColors.black,
-              fontSize: 16.0,
-            ),
+        style: widget.textStyle,
         child: GestureDetector(
           // Blocks taps from propagating to the modal sheet and popping.
           onTap: () {},

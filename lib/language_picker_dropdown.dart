@@ -4,8 +4,12 @@ import 'package:flutter/material.dart';
 
 ///Provides a customizable [DropdownButton] for all languages
 class LanguagePickerDropdown extends StatefulWidget {
-  LanguagePickerDropdown(
-      {this.itemBuilder, this.initialValue, this.onValuePicked, this.languagesList});
+  LanguagePickerDropdown({
+    required this.itemBuilder,
+    required this.initialValue,
+    required this.onValuePicked,
+    required this.languagesList,
+  });
 
   ///This function will be called to build the child of DropdownMenuItem
   ///If it is not provided, default one will be used which displays
@@ -18,7 +22,7 @@ class LanguagePickerDropdown extends StatefulWidget {
   final String initialValue;
 
   ///This function will be called whenever a Language item is selected.
-  final ValueChanged<Language> onValuePicked;
+  final ValueChanged<Language?> onValuePicked;
 
   /// List of languages available in this picker.
   final List<Map<String, String>> languagesList;
@@ -28,12 +32,12 @@ class LanguagePickerDropdown extends StatefulWidget {
 }
 
 class _LanguagePickerDropdownState extends State<LanguagePickerDropdown> {
-  List<Language> _languages;
-  Language _selectedLanguage;
+  late List<Language> _languages;
+  Language? _selectedLanguage;
 
   @override
   void initState() {
-    final languageList = widget.languagesList ?? defaultLanguagesList;
+    final languageList = widget.languagesList;
     _languages = languageList.map((item) => Language.fromMap(item)).toList();
     if (widget.initialValue != null) {
       try {

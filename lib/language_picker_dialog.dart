@@ -3,7 +3,6 @@ import 'package:language_pickers/utils/typedefs.dart';
 
 import 'package:language_pickers/utils/my_alert_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 import 'languages.dart';
 
 ///Provides a customizable [Dialog] which displays all languages
@@ -79,22 +78,22 @@ class LanguagePickerDialog extends StatefulWidget {
   final List<Map<String, String>> languagesList;
 
   LanguagePickerDialog({
-    Key key,
-    this.onValuePicked,
-    this.title,
-    this.titlePadding,
+    Key? key,
+    required this.onValuePicked,
+    required this.title,
+    required this.titlePadding,
     this.contentPadding = const EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 16.0),
-    this.semanticLabel,
-    this.itemBuilder,
+    required this.semanticLabel,
+    required this.itemBuilder,
     this.isDividerEnabled = false,
     this.divider = const Divider(
       height: 0.0,
     ),
     this.isSearchable = false,
-    this.searchInputDecoration,
-    this.searchCursorColor,
-    this.searchEmptyView,
-    this.languagesList,
+    required this.searchInputDecoration,
+    required this.searchCursorColor,
+    required this.searchEmptyView,
+    required this.languagesList,
   }) : super(key: key);
 
   @override
@@ -104,12 +103,12 @@ class LanguagePickerDialog extends StatefulWidget {
 }
 
 class SingleChoiceDialogState extends State<LanguagePickerDialog> {
-  List<Language> _allLanguages;
-  List<Language> _filteredLanguages;
+  late List<Language> _allLanguages;
+  late List<Language> _filteredLanguages;
 
   @override
   void initState() {
-    final languageList = widget.languagesList ?? defaultLanguagesList;
+    final languageList = widget.languagesList;
     _allLanguages = languageList.map((item) => Language.fromMap(item)).toList();
     _filteredLanguages = _allLanguages;
     super.initState();
@@ -143,10 +142,7 @@ class SingleChoiceDialogState extends State<LanguagePickerDialog> {
                     ))
                 .toList(),
           )
-        : widget.searchEmptyView ??
-            Center(
-              child: Text('No language found.'),
-            );
+        : widget.searchEmptyView;
   }
 
   _buildHeader() {
@@ -173,7 +169,7 @@ class SingleChoiceDialogState extends State<LanguagePickerDialog> {
     return TextField(
       cursorColor: widget.searchCursorColor,
       decoration:
-          widget.searchInputDecoration ?? InputDecoration(hintText: 'Search'),
+          widget.searchInputDecoration,
       onChanged: (String value) {
         setState(() {
           _filteredLanguages = _allLanguages
