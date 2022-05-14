@@ -1,4 +1,5 @@
-import 'package:language_pickers2/languages.dart';
 import 'package:flutter/material.dart';
+
+import '../languages.dart';
 
 typedef Widget ItemBuilder(Language language);

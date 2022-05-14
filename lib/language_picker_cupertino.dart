@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
-import 'package:language_pickers2/languages.dart';
-import 'package:language_pickers2/utils/typedefs.dart';
+
+import 'languages.dart';
+import 'utils/typedefs.dart';
 
 const double defaultPickerSheetHeight = 216.0;
 const double defaultPickerItemHeight = 32.0;
@@ -13,7 +14,7 @@ class LanguagePickerCupertino extends StatefulWidget {
 
   ///Callback that is called with selected item of type Language which returns a
   ///Widget to build list view item inside dialog
-  final ItemBuilder itemBuilder;
+  final ItemBuilder? itemBuilder;
 
   ///The [itemExtent] of [CupertinoPicker]
   /// The uniform height of all children.
@@ -26,7 +27,7 @@ class LanguagePickerCupertino extends StatefulWidget {
   final double pickerSheetHeight;
 
   ///The TextStyle that is applied to Text widgets inside item
-  final TextStyle textStyle;
+  final TextStyle? textStyle;
 
   /// Relative ratio between this picker's height and the simulated cylinder's diameter.
   ///
@@ -35,7 +36,7 @@ class LanguagePickerCupertino extends StatefulWidget {
   /// For more details, see [ListWheelScrollView.diameterRatio].
   ///
   /// Must not be null and defaults to `1.1` to visually mimic iOS.
-  final double diameterRatio;
+  final double? diameterRatio;
 
   /// Background color behind the children.
   ///
@@ -43,38 +44,38 @@ class LanguagePickerCupertino extends StatefulWidget {
   ///
   /// This can be set to null to disable the background painting entirely; this
   /// is mildly more efficient than using [Colors.transparent].
-  final Color backgroundColor;
+  final Color? backgroundColor;
 
   /// {@macro flutter.rendering.wheelList.offAxisFraction}
-  final double offAxisFraction;
+  final double? offAxisFraction;
 
   /// {@macro flutter.rendering.wheelList.useMagnifier}
-  final bool useMagnifier;
+  final bool? useMagnifier;
 
   /// {@macro flutter.rendering.wheelList.magnification}
-  final double magnification;
+  final double? magnification;
 
   /// A [FixedExtentScrollController] to read and control the current item.
   ///
   /// If null, an implicit one will be created internally.
-  final FixedExtentScrollController scrollController;
+  final FixedExtentScrollController? scrollController;
 
   /// List of languages available in this picker.
-  final List<Map<String, String>> languagesList;
+  final List<Language> languagesList;
 
   const LanguagePickerCupertino({
     Key? key,
     required this.onValuePicked,
-    required this.itemBuilder,
+    this.itemBuilder,
     this.pickerItemHeight = defaultPickerItemHeight,
     this.pickerSheetHeight = defaultPickerSheetHeight,
-    required this.textStyle,
-    required this.diameterRatio,
-    required this.backgroundColor,
-    required this.offAxisFraction,
-    required this.useMagnifier,
-    required this.magnification,
-    required this.scrollController,
+    this.textStyle,
+    this.diameterRatio,
+    this.backgroundColor,
+    this.offAxisFraction,
+    this.useMagnifier,
+    this.magnification,
+    this.scrollController,
     required this.languagesList,
   }) : super(key: key);
 
@@ -88,8 +89,7 @@ class _CupertinoLanguagePickerState extends State<LanguagePickerCupertino> {
   @override
   void initState() {
     super.initState();
-    final languageList = widget.languagesList;
-    _allLanguages = languageList.map((item) => Language.fromMap(item)).toList();
+    _allLanguages = widget.languagesList;
   }
 
   @override
@@ -102,7 +102,7 @@ class _CupertinoLanguagePickerState extends State<LanguagePickerCupertino> {
       height: widget.pickerSheetHeight,
       color: CupertinoColors.white,
       child: DefaultTextStyle(
-        style: widget.textStyle,
+        style: widget.textStyle ?? TextStyle(),
         child: GestureDetector(
           // Blocks taps from propagating to the modal sheet and popping.
           onTap: () {},
@@ -120,7 +120,7 @@ class _CupertinoLanguagePickerState extends State<LanguagePickerCupertino> {
       backgroundColor: CupertinoColors.white,
       children: _allLanguages
           .map<Widget>((Language language) => widget.itemBuilder != null
-              ? widget.itemBuilder(language)
+              ? widget.itemBuilder!(language)
               : _buildDefaultItem(language))
           .toList(),
       onSelectedItemChanged: (int index) {

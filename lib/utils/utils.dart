@@ -1,10 +1,11 @@
-import 'package:language_pickers2/languages.dart';
+import '../languages.dart';
 
 class LanguagePickerUtils {
+  static List<Language> languageList = defaultLanguagesList.map((item) => Language.fromMap(item)).toList();
+
   static Language getLanguageByIsoCode(String isoCode) {
-    final _languages = defaultLanguagesList.map((item) => Language.fromMap(item)).toList();
     try {
-      return _languages
+      return languageList
           .where((language) =>
               language.isoCode.toLowerCase() == isoCode.toLowerCase())
           .toList()[0];
